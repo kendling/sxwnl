@@ -878,8 +878,8 @@ function Lunar(){
 
  //html月历生成,结果返回在lun中,curJD为当前日期(用于设置今日标识)
  this.yueLiHTML=function(By,Bm,curJD){
-  var sty_head =' style="font-family: 宋体,serif; font-size: 14px; text-align: center; background-color: #E0E0FF; color: #000000; font-weight: bold" ';
-  var sty_body =' style="font-family: 宋体,serif; font-size: 12px; text-align: center " ';
+  var sty_head =' style="font-family: 雅黑,黑体; font-size: 14px; text-align: center; background-color: #E0E0FF; color: #000000; font-weight: bold" ';
+  var sty_body =' style="font-family: 雅黑,黑体; font-size: 12px; text-align: center " ';
   var sty_date =' style="font-family: Arial Black; text-align: center;font-size: 20px" ';
   var sty_date2=' style="font-family: Arial Black; text-align: center;font-size: 20px; color: #FF0000" ';
   var sty_cur  =' style="background-color:#90D050" ';
@@ -924,18 +924,19 @@ function Lunar(){
 
     if(ob.Fjia) c2 = sty_date2; //节日置红色
     else        c2 = sty_date;
-    c2 += ' onmouseover="showMessD('+i+')"';
-    c2 += ' onmouseout ="showMessD(-1)"';
     c2 = '<span' + c2 + '>' +ob.d + '</span>'; //公历的日名称
+
+    c3 = ' onmouseover="showMessD('+i+')"';
+    c3 += ' onmouseout ="showMessD(-1)"';
 
     if(ob.d0 == curJD) c2='<span'+sty_cur+'>'+c2+'</span>'; //今日标识
 
 
-    cr += '<td'+sty_body+'width="14%">'+c2+'<br>'+isM+c+'</td>';
+    cr += '<td'+sty_body+c3+'width="14%">'+c2+'<br>'+isM+c+'</td>';
     if(i==this.dn-1) { for(j=0;j<6-ob.week;j++) cr+='<td'+sty_body+'></td>'; } //末行后面的空单元格
     if(i==this.dn-1||ob.week==6) ta0+='<tr>'+cr+'</tr>', cr="";
   }
-  this.pg1='<table border=0 cellpadding=3 cellspacing=1 width="100%">'+ta0+'</table>';
+  this.pg1='<table border=0 cellpadding=5 cellspacing=2 width="100%">'+ta0+'</table>';
 
   var b2='',b3='',b4='';
   for(i=0;i<this.dn;i++){

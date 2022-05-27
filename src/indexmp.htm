@@ -7,18 +7,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <style>
- td,p {font-family:宋体,serif; font-size:12px; line-height:150%}
+ td,p   {font-family:雅黑,黑体; font-size:16px; line-height:150%}
  .bd0   {border: 0px}
- .bd1   {border: 1px solid #888888;padding: 10px}
+ .bd1   {border: 1px solid #888888}
  .bd2   {border: 2px solid #000000}
- .dTop  {border-top:    1px solid #000000; font-size:12px}
- .dBot  {border-bottom: 1px solid #000000; font-size:12px}
- .dRig  {border-right:  1px solid #888888; font-size:12px}
- .dLef  {border-left:   1px solid #888888; font-size:12px}
- .dRB   {border-right: 1px solid #000000;border-bottom: 1px solid #000000; font-size:12px}
- .dRT   {border-right: 1px solid #000000;border-top:    1px solid #000000; font-size:12px}
- .dBot2 {border-bottom: 1px solid #C0C0C0; font-size:12px}
- .dTop2 {border-top:    1px solid #C0C0C0; font-size:12px}
+ .dTop  {border-top:    1px solid #000000}
+ .dBot  {border-bottom: 1px solid #000000}
+ .dRig  {border-right:  1px solid #888888}
+ .dLef  {border-left:   1px solid #888888}
+ .dRB   {border-right: 1px solid #000000;border-bottom: 1px solid #000000}
+ .dRT   {border-right: 1px solid #000000;border-top:    1px solid #000000}
+ .dBot2 {border-bottom: 1px solid #C0C0C0}
+ .dTop2 {border-top:    1px solid #C0C0C0}
 
 </style>
 <!--js1S-->
@@ -35,7 +35,7 @@
 </head>
 <body>
 <center>
-<table width="100%" cellspacing=0 cellpadding=2>
+<table width="100%" cellspacing=0 cellpadding=10>
   <tr><td width="100%" align=right>
   <!--本地时间--><span id=Clock1 style='color:red;font-weight:bold'></span>
   <!--时区选择--><select id=Sel_zhou onchange="change_zhou()"></select> <select id=Sel_dq onchange="change_dq()"></select><br>
@@ -43,7 +43,7 @@
   </td></tr>
 
   <tr><td width="100%" bgcolor="#E0E0FF">
-  <!--软件版本--><span style='font-family:楷体_GB2312,serif;font-size:16px;color:#FF0000;font-weight:bold'>寿星</span><span style='font-size:12px;font-weight:bold'><i>天文历(V5.10)</i></span>
+  <!--软件版本--><span style='font-family:楷体_GB2312;font-size:16px;color:#FF0000;font-weight:bold'>寿星</span><span style='font-weight:bold'><i>天文历(V5.10)</i></span>
   <!--经纬选择--><select id=Sel1 onchange="change(0)" style="width:80px"></select> <select id=Sel2 onchange="change2()"></select>
   <!--经度纬度--><span id=Cal_zdzb></span>
   </td></tr>
@@ -68,7 +68,7 @@
 </table>
 
 
-<table width="100%" class=bd1 cellpadding=0 cellspacing=0>
+<table width="100%" class=bd1 cellpadding=5 cellspacing=0>
 <!--帮助-->
 <tr><td class=dBot2 colspan=2 id=help style="display:none"></td></tr>
 
@@ -76,7 +76,7 @@
 <tr id=page1><td valign=top>
  <table width="100%" cellspacing=0 cellpadding=0><!--月历表-->
   <tr><td>
-   公元<input type=text id=Cal_y size=4 value=2008>年<input type=text maxlength=2 id=Cal_m size=2 value=1>月
+   公元<input type=text id=Cal_y size=4 value=2008 onkeydown="if (event.keyCode==13) getLunar();">年<input type=text maxlength=2 id=Cal_m size=2 value=1 onkeydown="if (event.keyCode==13) getLunar();">月
    <input type=button value="确定" onclick='getLunar()'><br>
    <input type=button value="年↑" onclick='changeYear(0)'><input type=button value="年↓" onclick='changeYear(1)'>
    <input type=button value="月↑" onclick='changeMonth(0)'><input type=button value="月↓" onclick='changeMonth(1)'>
@@ -87,18 +87,18 @@
    <br>
    <div align=center id=Cal5></div><br><!--日月出没-->
    <div align=center id=Cal4></div>    <!--月相节气-->
-   <div><br><b>　提示：</b>如果按住ctrl键不放，再将鼠标移出日历区，即可保持该日信息摘要不变；日月升降是本地时间，气朔时刻是北京时间；输入公元前212年方法是B212或*212或-211；BC4713至9999年有效,<font color=red><b><i>BC722年以后与实历相符。</i></b></font>本程序编写于2008年-2009年,2018年做了一点改动,使之可在手机上运行。<br><br></div>
+   <div><br><b>　提示：</b>如果按住ctrl键不放，再将鼠标移出日历区，即可保持该日信息摘要不变；日月升降是本地时间，气朔时刻是北京时间；输入公元前212年方法是B212或*212或-211；<br>BC4713至9999年有效,<font color=red><b><i>BC722年以后与实历相符。</i></b></font><br>本程序编写于2008年-2009年,2018年做了一点改动,使之可在手机上运行。<br><br></div>
   </td></tr>
  </table>
 </td></tr>
 
 <!--年历表-->
 <tr id=page2 style="display:none"><td class=dBot2>
-  公元<input type=text size=4 id=Cp2_y value=2008>年<input type=checkbox id=Cp2_tg checked>时刻/干支
+  公元<input type=text size=4 id=Cp2_y value=2008 onkeydown="if (event.keyCode==13) getNianLi(0);">年<input type=checkbox id=Cp2_tg checked onkeydown="if (event.keyCode==13) getNianLi(0);">时刻/干支
   <input type=button onclick="getNianLi(0)"  value="确定">
   <input type=button onclick="getNianLi(-1)" value="年↑">
   <input type=button onclick="getNianLi(1)"  value="年↓"><br>
-  年数<input type=text size=2 id=Cp2_n value=2>
+  年数<input type=text size=2 id=Cp2_n value=2 onkeydown="if (event.keyCode==13) getNianLiN();">
   <input type=button onclick="getNianLiN()"  value="多年">
   <div id=Cal7></div>
 </td></tr>
@@ -228,7 +228,7 @@ UTC/TD<input id=Cf_ut type=checkbox checked><br>
 个数<input id=Cf_n type=text size=4 value=10>
 <input type=button value="确定" onclick="aCalc()">
 <a href="javascript:showHelp(6)">帮助</a><br>
-<textarea cols=75 rows=15 id=Cf_db style="font-family:宋体,serif;font-size: 12px" wrap=off></textarea><br>
+<textarea cols=75 rows=15 id=Cf_db style="font-family:宋体;font-size: 12px" wrap=off></textarea><br>
 <textarea cols=75 rows=15 id=Cf_xl style="font-size: 12px"></textarea><br>
 </td></tr>
 
@@ -443,8 +443,8 @@ UTC/TD<input id=Cf_ut type=checkbox checked><br>
 
 </table>
 
-<div id=Cal_pan style="font-size:12px; position:absolute; z-index:1; width:160;FILTER: shadow(color=#333333,direction=135);display:none">
- <div id=Cal_pan_in style="background-color:#5555A0;width:150;text-align:center;line-height: 150%; color:#FFFFFF; display:block;filter:Alpha(opacity=90)">abc</div><br>
+<div id=Cal_pan style="font-size:12px; position:absolute; z-index:1; width:160px;FILTER: drop-shadow(0px 0px 5px #333333);display:none">
+ <div id=Cal_pan_in style="background-color:#5555A0;width:150px;text-align:center;line-height: 150%; color:#FFFFFF; display:block;filter:opacity(90%)">abc</div><br>
 </div>
 
 <script language=javascript>
@@ -732,7 +732,7 @@ function tu_calc(ly){ //ly是取时间的方式,xm是计算的项目
   Cb_b1.innerHTML = '';
   return;
  }
- tu1.ecShow(0,0,0,0);
+ //tu1.ecShow(0,0,0,0); // 没有此函数
  Cb_zb.innerHTML = Cb_b1.innerHTML = Cb_b2.innerHTML = '';
 
 }
@@ -1040,7 +1040,7 @@ function showPage(pg){
   page11.style.display='none';
   page12.style.display='none';
   page13.style.display='none';
-  if(pg==1) page1.style.display='table-cell;';
+  if(pg==1) page1.style.display='block';
   if(pg==2){page2.style.display='block'; getNianLi(0);} //年历
   if(pg==3){page3.style.display='block'; tu_calc(2);} //图表
   if(pg==4) page4.style.display='block'; //地方日食
@@ -1053,6 +1053,40 @@ function showPage(pg){
   if(pg==11) page11.style.display='block'; //命理八字
   if(pg==12) page12.style.display='block'; //工具
   if(pg==13) page13.style.display='block'; //常数表
+}
+
+/********************
+初始化其他页面的年份
+*********************/
+function set_date_other(JD){
+  Cp2_y.value = JD.Y;
+  Cb_y.value = JD.Y;
+  Cb_m.value = JD.M;
+  Cb_d.value = JD.D;
+  Cc_y.value = JD.Y;
+  Cc_m.value = JD.M;
+  Cc_d.value = JD.D;
+  Cd_y.value = JD.Y;
+  Cd_m.value = JD.M;
+  Cd_d.value = JD.D;
+  Ce_y.value = JD.Y;
+  Ce_m.value = JD.M;
+  Ce_d.value = JD.D;
+  Cf_y.value = JD.Y;
+  Cf_m.value = JD.M;
+  Cf_d.value = JD.D;
+  Cp8_y.value = JD.Y;
+  Cp9_y.value = JD.Y;
+  Cp9_m.value = JD.M;
+  Cp9_d.value = JD.D;
+  Cp10_y.value = JD.Y;
+  Cp10_m.value = JD.M;
+  Cml_y.value = JD.Y;
+  Cml_m.value = JD.M;
+  Cml_d.value = JD.D;
+  GJ1_y.value = JD.Y;
+  GJ1_m.value = JD.M;
+  GJ1_d.value = JD.D;
 }
 
 /********************
@@ -1074,6 +1108,7 @@ function set_date_screen(fw){ //把当前时间置于屏幕的便入框之中
  if(!fw||fw==2){
   Cal_y.value = JD.Y;
   Cal_m.value = JD.M;
+  set_date_other(JD);
  }
  curJD=int2(curJD+0.5);
 }
@@ -1233,9 +1268,21 @@ function showMessD(n){ //显时本月第n日的摘要信息。调用前应先执
  if(!lun.dn||n>=lun.dn) return;
  var vJ = Sel2.vJ-0, vW = Sel2.vW-0;
 
+ if (event){
+   td = event.srcElement;
+   i = 5; // 最大查找 td 标签的层数
+   do {
+    if (td.tagName=='TD') break;
+    td = td.parentElement;
+    --i;
+   } while (i>0)
+ }
  if(n==-1){ //鼠标移出日期上方
    Cal_pan.style.display = 'none';
    Cal5.innerHTML = Cal5.bak;
+   if (td && td.tagName=='TD'){
+    td.style.backgroundColor= '';
+   }
  }
  if(n==-2) Cal5.bak = Cal5.innerHTML = RTS1(curJD, vJ, vW, curTZ);
  if(n<0) return;
@@ -1243,7 +1290,8 @@ function showMessD(n){ //显时本月第n日的摘要信息。调用前应先执
  var ob = lun.lun[n];
  Cal5.innerHTML = RTS1(ob.d0, vJ, vW, curTZ);
 
- if(window.event && window.event.srcElement.tagName=='SPAN'){ //鼠标移过日期上方
+ if(window.event && td.tagName=='TD'){ //鼠标移过日期上方
+  td.style.backgroundColor= 'aqua';
   s  = Ayear2year(ob.y) + '年' + ob.m + '月' + ob.d + '日<br>'
   s += ob.Lyear3+'年 星期' + JD.Weeks[ob.week] + ' ' + ob.XiZ +'<br>';
   s += ob.Lyear4+'年 '+ob.Lleap + ob.Lmc + '月' + (ob.Ldn>29?'大 ':'小 ') + ob.Ldc + '日<br>';
@@ -1258,8 +1306,11 @@ function showMessD(n){ //显时本月第n日的摘要信息。调用前应先执
   if(ob.C)    s += ob.C;
   Cal_pan.style.display = 'block'; //先显示再传值屏幕流畅
   Cal_pan_in.innerHTML = s;
-  Cal_pan.style.left = window.event.x+document.body.scrollLeft + ( (ob.week>3) ? -180 : 20 )+'px';
-  Cal_pan.style.top  = window.event.y+document.body.scrollTop  - ( (ob.weeki<2)?    0 :100 )+'px';
+  pos = td.getBoundingClientRect();
+  pan_width = Cal_pan.getBoundingClientRect().width;
+  pan_height = Cal_pan_in.getBoundingClientRect().height;
+  Cal_pan.style.left = pos.x+document.documentElement.scrollLeft + ( (ob.week>3) ? -pan_width : pos.width )+'px';
+  Cal_pan.style.top  = pos.y+document.documentElement.scrollTop  - ( (ob.weeki<2)?    0 : (pan_height - pos.height) )+'px';
  }
 }
 
